@@ -333,7 +333,8 @@ useEffect(() => {
           <div className="pill"><span className="blink"/>&nbsp;Waitlist now open</div>
           <h1>Africa&apos;s digital era<br/>starts at <span className="gt">dawn.</span></h1>
           <p className="hero-rotate">Built for every <span className={`hw gt${wordFade ? ' fade' : ''}`}>{words[wordIdx]}</span> in Africa.</p>
-          <p className="hsub">Dawnova Technologies is building Africa&apos;s most comprehensive digital ecosystem: commerce, investment, AI, mobility, media and beyond. One name. Nine arms. Born in Nigeria.</p>
+          <p className="hsub">Dawnova Technologies is building Africa&apos;s most comprehensive digital ecosystem: commerce, investment, AI, mobility, media and beyond. </p>
+          <p className="hsub">One name. Nine arms. One vision.</p>
           <div className="hero-cta-wrap">
             <button className="btn-p" onClick={() => scrollTo('waitlist')}>Claim My Early Access — Free</button>
             <div style={{display:'flex',alignItems:'center',gap:10,marginTop:4}}>
@@ -514,7 +515,7 @@ useEffect(() => {
             <p className="ey">Early Community</p>
             <h2>What people are saying.</h2>
             <div className="sp-grid">
-              {[{a:'A',n:'Amaka O.',r:'Fashion business owner, Lagos',q:'Finally, someone building the tools Nigerian businesses actually need. WhatsApp is where we live — it should be where we sell from too.'},{a:'T',n:'Tunde B.',r:'Electronics retailer, Ibadan',q:"I've been waiting for something like Dawnova Commerce my whole business life. One place for everything — I'm already on the waitlist."},{a:'C',n:'Chika N.',r:'Early waitlist member',q:"The structure behind this is unlike any Nigerian startup I've seen. CAPEM, formal documents, a real roadmap. These people are serious."}].map((item,i) => (
+              {[{a:'A',n:'Amaka O.',r:'Fashion business owner, Lagos',q:'Finally, someone building the tools Nigerian businesses actually need. WhatsApp is where we live, it should be where we sell from too.'},{a:'T',n:'Tunde B.',r:'Electronics retailer, Ibadan',q:"I've been waiting for something like Dawnova Commerce my whole business life. One place for everything. I'm already on the waitlist."},{a:'C',n:'Chika N.',r:'Early waitlist member',q:"The structure behind this is unlike any Nigerian startup I've seen. CAPEM, formal documents, a real roadmap. These people are serious."}].map((item,i) => (
                 <div className="sp-card" key={i}>
                   <div className="sp-quote" style={{fontSize:'.88rem',lineHeight:1.65,marginBottom:16,fontStyle:'italic'}}><span style={{color:'#FB7185',fontSize:'1.4rem',fontFamily:"'Space Grotesk',sans-serif",display:'block',marginBottom:6}}>&ldquo;</span>{item.q}</div>
                   <div style={{display:'flex',alignItems:'center',gap:10}}>
@@ -524,7 +525,7 @@ useEffect(() => {
                 </div>
               ))}
             </div>
-            <p style={{marginTop:16,color:'#8A90B5',fontSize:'.74rem',fontStyle:'italic',textAlign:'center'}}>* Replace with real verified quotes before launch.</p>
+            <p style={{marginTop:16,color:'#8A90B5',fontSize:'.74rem',fontStyle:'italic',textAlign:'center'}}> Welcome to the Dawnova Community </p>
           </div>
         </div>
       </div>
@@ -550,7 +551,7 @@ useEffect(() => {
           <div className="sec" style={{maxWidth:780}}>
             <p className="ey">From the Founder</p>
             <div style={{borderLeft:'3px solid #FB7185',paddingLeft:24,marginTop:40}}>
-              <p style={{fontFamily:"'Space Grotesk',sans-serif",fontSize:'clamp(1rem,2.2vw,1.15rem)',lineHeight:1.68,fontStyle:'italic',marginBottom:16}}>&ldquo;I&apos;ve watched Nigerian businesses — brilliant, resilient people — run their entire operation on WhatsApp voice notes and Excel sheets because nobody built the tools they actually need. Dawnova isn&apos;t a startup story. It&apos;s a mission to change that permanently. We didn&apos;t rush to launch. We built the foundation right first. Now we build everything else on top of it.&rdquo;</p>
+              <p style={{fontFamily:"'Space Grotesk',sans-serif",fontSize:'clamp(1rem,2.2vw,1.15rem)',lineHeight:1.68,fontStyle:'italic',marginBottom:16}}>&ldquo;I&apos;ve watched Nigerian businesses; brilliant, resilient people run their entire operation on WhatsApp voice notes and Excel sheets because nobody built the tools they actually need. Dawnova isn&apos;t a startup story. It&apos;s a mission to change that permanently. We didn&apos;t rush to launch. We built the foundation right first. Now we build everything else on top of it.&rdquo;</p>
               <div style={{fontFamily:"'Space Grotesk',sans-serif",fontWeight:600,fontSize:'.86rem'}}>Habeeb Ayodeji Sina-Omigbule</div>
               <div style={{color:'#8A90B5',fontSize:'.76rem',marginTop:2}}>Founder & CEO, Dawnova Technologies</div>
             </div>
