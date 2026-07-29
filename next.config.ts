@@ -38,9 +38,14 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https:",
+              // Fonts are self-hosted by next/font, so the Google Fonts hosts
+              // that used to be listed here were never contacted. Removed.
+              "style-src 'self' 'unsafe-inline'",
+              "font-src 'self'",
+              // Every image on the site is local. Previously this allowed any
+              // https host, which would have permitted an injected remote image.
+              // If you ever embed an external image, add its host here.
+              "img-src 'self' data: blob:",
               "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
               "frame-ancestors 'none'",
             ].join('; '),

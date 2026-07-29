@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next'
+import { SITE_URL } from './site-config'
 
+// Tells search engines what they may look at.
+// Everything is allowed except /api/, which is internal plumbing.
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://dawnova.tech/sitemap.xml',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

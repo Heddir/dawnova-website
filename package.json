@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.0",
-    "next": "16.2.9",
+    "@vercel/analytics": "^2.0.1",
+    "next": "16.2.12",
     "react": "19.2.4",
     "react-dom": "19.2.4"
+  },
+  "_comment_overrides": "Forces safe versions of two libraries that Next.js ships with. postcss 8.4.31 and sharp 0.34.5 both carry published high-severity advisories. Remove an entry here once Next ships a version that already includes the fix. Run 'npm audit' to check.",
+  "overrides": {
+    "postcss": "^8.5.24",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -20,7 +26,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
