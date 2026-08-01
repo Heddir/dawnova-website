@@ -67,7 +67,9 @@ export default function NotFound() {
         color: '#8A90B5',
         textTransform: 'uppercase',
       }}>
-        Rising from <span style={{ color: '#FB7185' }}>dawn</span>. Reaching for <span style={{ color: '#FB7185' }}>nova</span>.
+        {/* Nova Red per Brand Guidelines 4.1 — the tagline is part of the
+            identity, so it uses the primary palette, not interface Rose. */}
+        Rising from <span style={{ color: '#F2415A' }}>dawn</span>. Reaching for <span style={{ color: '#F2415A' }}>nova</span>.
       </p>
     </div>
   )

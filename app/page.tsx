@@ -256,18 +256,30 @@ export default function Home() {
   //  To remove a role entirely, delete its whole { ... } block and the comma.
   // ══════════════════════════════════════════════════════════════════════
   const TEAM = [
+    // Titles and descriptions come from Dawnova-Team-Roles-and-Responsibilities
+    // section 2, "The Team at a Glance". Every role is "Lead" rather than
+    // "Chief" on purpose — section 1.1 explains why: handing out executive
+    // titles before there is a department to be executive over leaves nowhere
+    // to put an experienced hire later without demoting whoever arrived first.
     {
       name:  'Habeeb Ayodeji Sina-Omigbule',
-      role:  'Founder & Chief Executive Officer',
+      role:  'Founder and Chief Executive Officer',
       photo: '/habeeb.png',
-      bio:   'Computer Engineering graduate and teacher. Founded Dawnova Technologies to build the digital backbone of African business.',
+      note:  '',
+      bio:   'Sets direction, represents the company, owns incorporation and partnerships.',
     },
-    { name: '', role: 'Chief Operating Officer',        photo: '', bio: '' },
-    { name: '', role: 'Chief Technology Officer',       photo: '', bio: '' },
-    { name: '', role: 'Chief Financial Officer',        photo: '', bio: '' },
-    { name: '', role: 'Chief Compliance Officer',       photo: '', bio: '' },
-    { name: '', role: 'Company Secretary',              photo: '', bio: '' },
-    { name: '', role: 'Head of Brand & Communications', photo: '', bio: '' },
+    {
+      name:  'Habeeb Ayodeji Sina-Omigbule',
+      role:  'Engineering Lead',
+      photo: '/habeeb.png',
+      note:  'until the beta',
+      bio:   'Writes the code and makes the product exist.',
+    },
+    { name: '', role: 'Design Lead',             photo: '', note: '', bio: 'Decides what merchants see and how they move through it.' },
+    { name: '', role: 'Merchant Growth Lead',    photo: '', note: '', bio: 'Brings businesses onto the platform.' },
+    { name: '', role: 'Merchant Support Lead',   photo: '', note: '', bio: 'Helps merchants, and finds out what they actually do.' },
+    { name: '', role: 'Content and Social Lead', photo: '', note: '', bio: 'Runs everything Dawnova says in public.' },
+    { name: '', role: 'Operations Lead',         photo: '', note: '', bio: 'Registration, agreements, accounts and records.' },
   ]
 
   // ── TESTIMONIALS ─────────────────────────────────────────────────────
@@ -298,6 +310,13 @@ export default function Home() {
     { q: 'What is Dawnova Technologies?', a: 'A Nigerian technology company. Today that means one real product: Dawnova Commerce, a WhatsApp-first commerce platform for Nigerian business owners. Around it sits a long-term vision of connected tools such as funding, delivery and smarter automation, each built only once it can strengthen the merchants already using Commerce.' },
     { q: 'Is Dawnova live right now?', a: 'We are in our pre-launch phase. Dawnova Commerce enters beta in Q4 2026. Join the waitlist to be among the first 500 merchants.' },
     { q: 'What is Dawnova Commerce?', a: 'A complete commerce operating system for Nigerian SMEs: WhatsApp-first, with storefront, inventory, payments, order management, and customer tools in one dashboard.' },
+    // The "orders you record by hand are never charged" clause is a permanent
+    // commitment, not marketing. Charging for manual orders would teach
+    // merchants to stop logging them, and a merchant's complete order history
+    // is the asset Dawnova Capital will underwrite lending against. The rest of
+    // this answer is deliberately loose on mechanism until the beta says what
+    // merchants actually use.
+    { q: 'What will Dawnova Commerce cost?', a: 'Free to start, and free to stay on the Starter plan. When we do charge, most of it will be a small share of the payments you take through Dawnova, and orders you record by hand are never charged. Exact pricing is set after the beta, from what merchants actually use rather than a guess made in advance.' },
     { q: 'How is Dawnova different from Bumpa or Shopify?', a: 'Every other platform treats WhatsApp as an add-on. We built WhatsApp as the foundation, because that is where Nigerian businesses operate.' },
     // CAPEM appears exactly once on the site now — here, where someone who has
     // seen the name in a document can look it up. It is an internal framework,
@@ -313,10 +332,42 @@ export default function Home() {
     <>
       <style>{`
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        /* Browsers do NOT inherit the page font into form controls — they use
+           their own default, which is Arial. Without this line the Privacy
+           Policy and Terms buttons render in Arial while everything around
+           them is Inter. */
+        button,input,textarea,select{font-family:inherit}
+        /* Inter is loaded at weights 400 and 500 only. Anything bolder was
+           being faked by the browser, which smears the letterforms. Bold text
+           inside body copy now uses Space Grotesk, which IS loaded at 700, so
+           it is a real bold and costs no extra download. */
+        strong,b{font-family:'Space Grotesk',sans-serif;font-weight:700}
         html{scroll-behavior:smooth}
         body{background:#0A0E1F;color:#F5F3ED;font-family:'Inter',sans-serif;overflow-x:hidden}
+        /* ── PRIMARY PALETTE (Brand Guidelines 3.1) ────────────────────────
+           Taken from the mark itself. Nova Red is the signature colour.
+           These are the ONLY colours allowed on the mark, the wordmark and
+           the tagline. Brand Guidelines 3.4 is the hard rule: the identity
+           uses primary colours only; everything else on screen may use
+           either palette. */
+        :root{
+          --nova-red:#F2415A; --ember:#D82448; --dawn-amber:#FDAB6A;
+          --silver:#D8D8DC; --ink:#000000;
+          --brand-gradient:linear-gradient(135deg,#FDAB6A,#F2415A,#D82448);
+        }
+        /* ── EXTENDED INTERFACE PALETTE (Brand Guidelines 3.3) ─────────────
+           Unchanged and still valid. A dashboard built only from reds reads
+           as a screen full of errors, so the interface keeps its range. */
         :root{--navy:#0A0E1F;--navy2:#12172E;--amber:#FDBA74;--coral:#FB7185;--violet:#C084FC;--white:#F5F3ED;--muted:#8A90B5;--border:#232A4A}
+        /* .gt  = interface gradient. For ordinary emphasis anywhere on screen.
+           .gtb = BRAND gradient, primary palette only. Brand Guidelines 3.5:
+                  the words Dawnova, dawn and nova, wherever they appear in
+                  headings or running text, may be coloured, and when coloured
+                  they use primary palette colours only. Never use .gt on them.
+                  (The wordmark lockup is separate and is never gradiented —
+                  only its "n" is coloured. That lives in the logo image.) */
         .gt{background:linear-gradient(135deg,#FDBA74,#FB7185,#C084FC);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .gtb{background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
         /* Invisible until a keyboard user presses Tab, then it appears as the
            first thing focused — letting them jump past the navigation instead
            of tabbing through it on every page load. */
@@ -362,7 +413,11 @@ export default function Home() {
         .hero-link{color:#8A90B5;font-size:.84rem;text-decoration:none;font-family:'Space Grotesk',sans-serif;transition:color .2s;display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer}
         .hero-link:hover{color:#F5F3ED}
         .htag{font-family:'Space Grotesk',sans-serif;font-size:.72rem;letter-spacing:.3em;color:#8A90B5;text-transform:uppercase}
-        .htag .hl{color:#FB7185}
+        /* Brand Guidelines 4.1: within the tagline, "dawn" and "nova" are
+           highlighted in Nova Red and everything else stays muted grey. This
+           was Rose #FB7185 from the interface palette, which 3.4 forbids on
+           the identity. The tagline is identity, so it is Nova Red now. */
+        .htag .hl{color:#F2415A}
         @keyframes din{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         .hc>*{animation:din .65s ease both}
         .hc>*:nth-child(1){animation-delay:.08s}.hc>*:nth-child(2){animation-delay:.2s}.hc>*:nth-child(3){animation-delay:.32s}.hc>*:nth-child(4){animation-delay:.44s}.hc>*:nth-child(5){animation-delay:.56s}.hc>*:nth-child(6){animation-delay:.68s}
@@ -505,6 +560,7 @@ export default function Home() {
         .team-card.open .team-name{color:#8A90B5;font-weight:500;font-size:.85rem;font-style:italic}
         .team-role{color:#FB7185;font-size:.74rem;font-family:'Space Grotesk',sans-serif;margin-top:3px}
         .team-card.open .team-role{color:#8A90B5}
+        .team-note{color:#8A90B5;font-weight:400;font-style:italic}
         .team-bio{color:#8A90B5;font-size:.79rem;margin-top:6px;line-height:1.55}
         .sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:44px}
         .sp-card{background:var(--navy2);border:1px solid var(--border);border-radius:14px;padding:22px}
@@ -644,7 +700,7 @@ export default function Home() {
         <canvas ref={canvasRef} aria-hidden="true" />
         <div className="hc">
           <div className="pill"><span className="blink"/>&nbsp;Waitlist now open</div>
-          <h1>Africa&apos;s digital era<br/>starts at <span className="gt">dawn.</span></h1>
+          <h1>Africa&apos;s digital era<br/>starts at <span className="gtb">dawn.</span></h1>
           <p className="hero-rotate">Built for every <span className={`hw gt${wordFade ? ' fade' : ''}`}>{words[wordIdx]}</span> in Africa.</p>
           <p className="hsub">Dawnova Commerce is a WhatsApp-first commerce platform built for Nigerian entrepreneurs. It is the first product from Dawnova Technologies, with a long-term vision of connected tools built around it.</p>
           <div className="hero-cta-wrap">
@@ -741,7 +797,7 @@ export default function Home() {
                   {icon:'📈', name:'Dawnova Capital', desc:'Funding for merchants, using their own sales history'},
                   {icon:'🤖', name:'Dawnova AI', desc:'Smart forecasting inside your Commerce dashboard'},
                   {icon:'🚗', name:'Dawnova Mobility', desc:'Delivery built into your storefront checkout'},
-                  {icon:'💳', name:'Dawnova Pay', desc:'Deeper payment tools as your store grows'},
+                  {icon:'💳', name:'Dawnova Pay', desc:'Payment links, instalment options and faster settlement as your store grows'},
                 ].map((arm,i) => (
                   <div className="ac" key={i}>
                     <div style={{fontSize:'1.4rem', marginBottom:9, opacity:.85}}>{arm.icon}</div>
@@ -1019,7 +1075,7 @@ export default function Home() {
                 )}
                 <div style={{minWidth:0}}>
                   <div className="team-name">{m.name || 'Appointment in progress'}</div>
-                  <div className="team-role">{m.role}</div>
+                  <div className="team-role">{m.role}{m.note && <span className="team-note"> · {m.note}</span>}</div>
                   {m.bio && <div className="team-bio">{m.bio}</div>}
                 </div>
               </div>
@@ -1147,7 +1203,7 @@ export default function Home() {
             <div className="ww">
               <div className="wglow"/>
               <p className="ey" style={{position:'relative'}}>Early Access</p>
-              <h2 style={{position:'relative'}}>Get early access to<br/><span className="gt">Dawnova Commerce.</span></h2>
+              <h2 style={{position:'relative'}}>Get early access to<br/><span className="gtb">Dawnova Commerce.</span></h2>
               <p style={{fontFamily:"'Space Grotesk',sans-serif",fontSize:'.78rem',color:'#8A90B5',margin:'8px 0 28px',position:'relative',maxWidth:440,marginLeft:'auto',marginRight:'auto',lineHeight:1.5}}>Be among the first 500 merchants to use the <strong style={{color:'#F5F3ED'}}>WhatsApp-first commerce platform</strong> built for Nigerian businesses.</p>
               {count !== null && count >= SETTINGS.showCounterAfter && (
                 <p style={{fontFamily:"'Space Grotesk',sans-serif",fontSize:'.78rem',color:'#8A90B5',marginBottom:28,position:'relative'}}>Already joined: <strong style={{color:'#FB7185'}}>{count} early members</strong></p>
@@ -1176,6 +1232,10 @@ export default function Home() {
                   )}
 
                   <p style={{fontSize:'.72rem',color:'#8A90B5',marginTop:8,position:'relative'}}>🔒 No credit card, no spam, and it takes about 30 seconds.</p>
+                  {/* The pricing promise, stated once beside the form. The full
+                      version is in the FAQ. No numbers anywhere until after the
+                      beta, so nothing here can turn out to be wrong. */}
+                  <p style={{fontSize:'.74rem',color:'#F5F3ED',marginTop:6,position:'relative',fontFamily:"'Space Grotesk',sans-serif"}}>Free to start. You won&apos;t pay us before Dawnova has made you money.</p>
 
                   {/* WhatsApp link — only shows once you fill in the real number
                       at the top of this file. Until then it stays hidden. */}
